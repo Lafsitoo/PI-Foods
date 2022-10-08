@@ -20,17 +20,17 @@ module.exports = (sequelize) => {
         defaultValue:
           "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/table-filled-with-large-variety-of-food-shot-from-royalty-free-image-1659038707.jpg?crop=0.668xw:1.00xh;0.167xw,0&resize=640:*",
       },
-      tipoDelPlato: {
+      // resumen del plato
+      summary: {
         type: DataTypes.STRING,
       },
-      resumenDelPlato: {
-        type: DataTypes.STRING,
-      },
-      nivelSalubre: {
+      // lvl de salubre
+      healthScore: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
-      pasoAPaso: {
+      // paso a paso
+      steps: {
         type: DataTypes.STRING,
       },
     },
