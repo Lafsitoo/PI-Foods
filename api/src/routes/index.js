@@ -2,14 +2,15 @@ const { Router } = require("express");
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 const { Recipe, Diet } = require("../db.js");
-const axios = "axios";
+const axios = require("axios");
 const { API_KEY } = process.env;
+const nRecipe = 100;
 
 const router = Router();
 
 const getAllApi = async () => {
   const apiUrl = await axios(
-    `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`
+    `https://api.spoonacular.com/recipes/complexSearch?addRecipeInformation=true&number=${nRecipe}&apiKey=${API_KEY}`
   );
 
   const infoApi = apiUrl.data.results.map((e) => {
@@ -45,28 +46,49 @@ const getInfoDb = async () => {
   });
 };
 
-const getAllRecipe = async () => {
-  const apiInfo = getAllApi();
-  const dbInfo = getInfoDb();
-  const allRecipe = apiInfo.concat(dbInfo);
-  return allRecipe;
+const getAllRecipes = async () => {
+  const apiInfo = await getAllApi();
+  const dbInfo = await getInfoDb();
+  const allRecipes = apiInfo.concat(dbInfo);
+  return allRecipes;
 };
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 
 //? Obterner todos los platos o el nombre del plato
-router.get("/", async (req, res) => {
-  res.send("Todos");
+router.get("/recipes", async (req, res) => {
+  const { name } = req.query;
+  try {
+    const totalRecipes = await getAllRecipes();
+
+    if (name) {
+      titleRecipe = totalRecipes.filter((e) =>
+        e.name.toLowerCase().includes(name.toLowerCase())
+      );
+      titleRecipe.length
+        ? res.status(200).send(titleRecipe)
+        : res
+            .status(404)
+            .send(
+              `No se ha encontrado una receta con el siguiente nombre ${name}`
+            );
+    }
+
+    res.status(200).send(totalRecipes);
+  } catch (error) {
+    res.status(404).send(error);
+    console.error(error);
+  }
 });
 
 //? Obtener el plato por id
-router.get("/:id", async (req, res) => {
+router.get("/recipes/:id", async (req, res) => {
   res.send("ID");
 });
 
 //? Crear un plato nuevo
-router.post("/", async (req, res) => {
+router.post("/recipe", async (req, res) => {
   res.send("Nuevo plato");
 });
 
