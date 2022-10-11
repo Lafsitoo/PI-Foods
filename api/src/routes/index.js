@@ -18,6 +18,7 @@ const getAllApi = async () => {
       id: e.id,
       name: e.title,
       image: e.image,
+      // dentro de diets existe más infomacion. Busco solo "name". que es lo que requiero
       diets: e.diets.map((d) => {
         return { name: d };
       }),
@@ -39,6 +40,7 @@ const getInfoDb = async () => {
     include: {
       model: Diet,
       attributes: ["name"],
+      // sobre esta tabla
       through: {
         attributes: [],
       },
