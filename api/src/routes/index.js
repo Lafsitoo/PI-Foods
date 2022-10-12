@@ -1,6 +1,6 @@
-const { Router } = require("express");
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
+const { Router } = require("express");
 const { Recipe, Diet } = require("../db.js");
 const axios = require("axios");
 const { API_KEY } = process.env;
@@ -18,11 +18,10 @@ const getAllApi = async () => {
       id: e.id,
       name: e.title,
       image: e.image,
-      // dentro de diets existe más infomacion. Busco solo "name". que es lo que requiero
+      // dentro de diets existe más infomacion. Busco solo "name", que es lo que requerimos
       diets: e.diets.map((d) => {
         return { name: d };
       }),
-      spoonacularScore: e.spoonacularScore,
       dishTypes: e.dishTypes.map((d) => {
         return { name: d };
       }),
@@ -63,7 +62,7 @@ router.get("/recipes", async (req, res) => {
   const { name } = req.query;
   try {
     const totalRecipes = await getAllRecipes();
-
+    // Si posee "name" lo filtamos. Ademas nos ahorramos otra ruta
     if (name) {
       titleRecipe = totalRecipes.filter(
         (e) => e.name.toLowerCase().includes(name.toLowerCase()) // ¿Incluye lo que pasa por query?
@@ -76,7 +75,7 @@ router.get("/recipes", async (req, res) => {
               `No se ha encontrado una receta con el siguiente nombre ${name}`
             );
     }
-
+    // Enviamos
     res.status(200).send(totalRecipes);
   } catch (error) {
     res.status(404).send(error);
@@ -87,6 +86,7 @@ router.get("/recipes", async (req, res) => {
 //? Obtener todas las dietas posibles
 
 router.get("/diets", async (req, res) => {
+  // Para no gastar una request de Api, buscamos entre las dietas que sabes que ya posee
   const listDiets = [
     "gluten free",
     "dairy free",
@@ -99,7 +99,6 @@ router.get("/diets", async (req, res) => {
     "fodmap friendly",
     "whole 30",
   ];
-  
   try {
     // Si lo que busco y ya esta dentro de mi tabla, no lo creo
     listDiets.forEach((e) => {
@@ -107,10 +106,9 @@ router.get("/diets", async (req, res) => {
         where: { name: e },
       });
     });
-
+    // La buscamos en db y la enviamos
     const all = await Diet.findAll();
     res.status(200).send(all);
-
   } catch (error) {
     res.status(404).send("Error");
   }
@@ -123,7 +121,38 @@ router.get("/recipes/:id", async (req, res) => {
 
 //? Crear un plato nuevo
 router.post("/recipe", async (req, res) => {
-  res.send("Nuevo plato");
+  // info que pido
+  const {
+    name,
+    image,
+    diets,
+    dishTypes,
+    summary,
+    healthScore,
+    steps,
+    createdInDb,
+  } = req.body;
+  try {
+    // creo la nueva receta, sin "diets"
+    const recipeCreated = await Recipe.create({
+      name,
+      image,
+      dishTypes,
+      summary,
+      healthScore,
+      steps,
+      createdInDb,
+    });
+    // busco la dieta en db
+    const dietsInDb = await Diet.findAll({
+      where: { name: diets },
+    });
+    // añadimos la nueva receta
+    recipeCreated.addDiet(dietsInDb);
+    res.status(200).send("¡Felicidades! Receta creada con Exito");
+  } catch (error) {
+    res.status(404).send(error);
+  }
 });
 
 module.exports = router;
