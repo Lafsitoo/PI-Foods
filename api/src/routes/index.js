@@ -116,7 +116,19 @@ router.get("/diets", async (req, res) => {
 
 //? Obtener el plato por id
 router.get("/recipes/:id", async (req, res) => {
-  res.send("ID");
+  const { id } = req.params;
+  try {
+    const recipesTotal = await getAllRecipes();
+    // preguntamos si hay id, si la hay la devolvera
+    if (id) {
+      const recipesId = await recipesTotal.filter((e) => e.id == id);
+      recipesId.length
+        ? res.status(200).send(recipesId)
+        : res.status(404).send("No fue posible encontrar la receta");
+    }
+  } catch (error) {
+    res.status(404).send(error);
+  }
 });
 
 //? Crear un plato nuevo
