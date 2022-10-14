@@ -3,7 +3,10 @@
 const { Router } = require("express");
 const { Recipe, Diet } = require("../db.js");
 const axios = require("axios");
+
+//? Aca me traigo la key del .env
 const { API_KEY } = process.env;
+//? Limito la cantidad de platos. En el Readme creo que pide 100
 const nRecipe = 100;
 
 const router = Router();
