@@ -1,5 +1,6 @@
 const initialState = {
   recipes: [],
+  allRecipes: [],
 };
 
 export default function rootReduce(state = initialState, action) {
@@ -8,6 +9,9 @@ export default function rootReduce(state = initialState, action) {
       return {
         ...state,
         recipes: action.payload,
+        allRecipes: action.payload,
       };
+    default:
+      return state;
   }
 }
