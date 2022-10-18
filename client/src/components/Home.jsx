@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllRecipes } from "../actions";
@@ -8,6 +8,23 @@ import Card from "./Card";
 export default function Home() {
   const dispatch = useDispatch();
   const allRecipes = useSelector((state) => state.recipes);
+
+  //? paginado
+  const [currentPage, setCurrentPage] = useState(1); // estado local, pág principal y seteado
+  const [recipesPerPage, setRecipesPerPage] = useState(9); // cuantos platos quiero por pág
+  // personajes por pag en indices 0...9
+  const indexOfLastCharacter = currentPage * recipesPerPage; // 9
+  const indexOfFirstCharacter = indexOfLastCharacter - recipesPerPage; // 0
+  // all recipes de la pág cargada. Cortara entre 0 - 9 el arreglo de recetas
+  const currentRecipe = allRecipes.slice(
+    indexOfFirstCharacter,
+    indexOfLastCharacter
+  );
+
+  // paginado render x num págs
+  const pagination = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
 
   // reinicio de recetas
   useEffect(() => {
@@ -76,10 +93,10 @@ export default function Home() {
       {/* Card */}
 
       <div>
-        {allRecipes?.map((e) => {
+        {allRecipes?.map((el) => {
           return (
-            <Link to={`/recipes/${e.id}`}>
-              <Card name={e.name} diet={e.diet} image={e.image} />
+            <Link to={`/recipes/${el.id}`}>
+              <Card name={el.name} image={el.image} diet={el.diet} />
             </Link>
           );
         })}

@@ -5,7 +5,7 @@ const { Recipe, Diet } = require("../db.js");
 const axios = require("axios");
 
 //? Aca me traigo la key del .env
-const { API_KEY } = process.env;
+const { API_KEY, API_KEY2, API_KEY3 } = process.env;
 //? Limito la cantidad de platos. En el Readme creo que pide 100
 const nRecipe = 100;
 
@@ -13,7 +13,7 @@ const router = Router();
 
 const getAllApi = async () => {
   const apiUrl = await axios(
-    `https://api.spoonacular.com/recipes/complexSearch?addRecipeInformation=true&number=${nRecipe}&apiKey=${API_KEY}`
+    `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY2}&addRecipeInformation=true&number=${nRecipe}`
   );
 
   const infoApi = apiUrl.data.results.map((e) => {

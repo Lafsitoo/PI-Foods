@@ -1,11 +1,13 @@
+import { GET_ALL_RECIPES } from "../actions";
+
 const initialState = {
   recipes: [],
   allRecipes: [],
 };
 
-export default function rootReduce(state = initialState, action) {
+function rootReducer(state = initialState, action) {
   switch (action.type) {
-    case "GET_RECIPES":
+    case GET_ALL_RECIPES:
       return {
         ...state,
         recipes: action.payload,
@@ -15,3 +17,5 @@ export default function rootReduce(state = initialState, action) {
       return state;
   }
 }
+
+export default rootReducer;
