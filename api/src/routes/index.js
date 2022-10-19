@@ -13,7 +13,7 @@ const router = Router();
 
 const getAllApi = async () => {
   const apiUrl = await axios(
-    `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY2}&addRecipeInformation=true&number=${nRecipe}`
+    `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY3}&addRecipeInformation=true&number=${nRecipe}`
   );
 
   const infoApi = apiUrl.data.results.map((e) => {
@@ -23,9 +23,6 @@ const getAllApi = async () => {
       image: e.image,
       // dentro de diets existe más infomacion. Busco solo "name", que es lo que requerimos
       diets: e.diets.map((d) => {
-        return { name: d };
-      }),
-      dishTypes: e.dishTypes.map((d) => {
         return { name: d };
       }),
       summary: e.summary,
