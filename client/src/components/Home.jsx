@@ -81,8 +81,8 @@ export default function Home() {
         <label> Tipo de Dieta </label>
         <select onChange={(e) => handleFilterDiet(e)}>
           <option value="Default"> Todas </option>
-          <option value="gluten Free"> Gluten Free </option>
-          <option value="dairy Free"> Dairy Free </option>
+          <option value="gluten free"> Gluten Free </option>
+          <option value="dairy free"> Dairy Free </option>
           <option value="ketogenic"> Ketogenic </option>
           <option value="vegan"> Vegan </option>
           <option value="lacto ovo vegetarian"> Lacto Ovo Vegetarian </option>
@@ -116,7 +116,7 @@ export default function Home() {
         {currentRecipe?.map((el) => {
           return (
             <Link to={`/recipes/${el.id}`}>
-              <Card name={el.name} image={el.image} diet={el.diet} />
+              <Card name={el.name} image={el.image} diet={el.diets} />
             </Link>
           );
         })}
