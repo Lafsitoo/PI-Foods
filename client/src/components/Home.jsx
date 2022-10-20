@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllRecipes, filterByDiets } from "../actions";
+import {
+  getAllRecipes,
+  filterByDiets,
+  filterBySource,
+  filterSortName,
+} from "../actions";
 import { Link } from "react-router-dom";
 import Card from "./Card";
 import Pagination from "./Pagination";
@@ -24,6 +29,9 @@ export default function Home() {
     indexOfLastCharacter
   );
 
+  // ordenamiento de a-z / z-a. El primer valor no es utilizado, sin embargo, necesitamos que el segundo argumento exista
+  const [order, setOrder] = useState("");
+
   // paginado render x num págs
   const pagination = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -39,13 +47,30 @@ export default function Home() {
   //? Recargar pág
   function handleClick(e) {
     e.preventDefault();
+    setCurrentPage(1);
     dispatch(getAllRecipes());
   }
 
-  //?
+  //? Filtro dietas dispatch
   function handleFilterDiet(e) {
     e.preventDefault();
+    setCurrentPage(1);
     dispatch(filterByDiets(e.target.value));
+  }
+
+  //? Filtro fuente de datos
+  function handleFilterSource(e) {
+    e.preventDefault();
+    setCurrentPage(1);
+    dispatch(filterBySource(e.target.value));
+  }
+
+  //? Filtro a-z / z-a
+  function handleOrderName(e) {
+    e.preventDefault();
+    setCurrentPage(1);
+    dispatch(filterSortName(e.target.value));
+    setOrder(`Order ${e.target.value}`);
   }
 
   return (
@@ -66,7 +91,7 @@ export default function Home() {
 
       <div>
         <label> Orden Alfabético </label>
-        <select>
+        <select onChange={(e) => handleOrderName(e)}>
           <option value="Asc"> A-Z </option>
           <option value="Desc"> Z-A </option>
         </select>
@@ -94,7 +119,7 @@ export default function Home() {
         </select>
 
         <label> Fuente de Datos </label>
-        <select>
+        <select onChange={(e) => handleFilterSource(e)}>
           <option value="All"> Todos </option>
           <option value="Created"> Recetas Creadas </option>
           <option value="Api"> Recetas de Api </option>
