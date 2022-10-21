@@ -1,15 +1,21 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
+import React from "react";
+import { Link } from "react-router-dom";
+// hooks de React
+import { useEffect, useState } from "react";
+// hooks de React - Redux
 import { useDispatch, useSelector } from "react-redux";
+// actions
 import {
   getAllRecipes,
   filterByDiets,
   filterBySource,
   filterSortName,
 } from "../actions";
-import { Link } from "react-router-dom";
+// componenetes que voy a usar
 import Card from "./Card";
 import Pagination from "./Pagination";
+
+//* COMIENZO DEL COMPONENTE NUCLEO
 
 export default function Home() {
   const dispatch = useDispatch();
