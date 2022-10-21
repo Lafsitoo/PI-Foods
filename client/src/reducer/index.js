@@ -1,6 +1,7 @@
 import {
   GET_ALL_RECIPES,
   GET_DIETS,
+  GET_RECIPES_BY_NAME,
   FILTER_BY_DIET,
   FILTER_BY_SOURCE,
   ORDER_SORT_NAME,
@@ -25,6 +26,12 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         diets: action.payload,
+      };
+
+    case GET_RECIPES_BY_NAME:
+      return {
+        ...state,
+        recipes: action.payload,
       };
 
     case FILTER_BY_DIET:

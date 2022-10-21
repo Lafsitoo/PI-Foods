@@ -13,7 +13,7 @@ const router = Router();
 
 const getAllApi = async () => {
   const apiUrl = await axios(
-    `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=${nRecipe}`
+    `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY3}&addRecipeInformation=true&number=${nRecipe}`
   );
 
   const infoApi = apiUrl.data.results.map((e) => {
@@ -61,25 +61,16 @@ const getAllRecipes = async () => {
 router.get("/recipes", async (req, res) => {
   const { name } = req.query;
   try {
-    const totalRecipes = await getAllRecipes();
-    // Si posee "name" lo filtamos. Ademas nos ahorramos otra ruta
-    if (name) {
-      titleRecipe = totalRecipes.filter(
-        (e) => e.name.toLowerCase().includes(name.toLowerCase()) // ¿Incluye lo que pasa por query?
-      );
-      titleRecipe.length
-        ? res.status(200).send(titleRecipe)
-        : res
-            .status(404)
-            .send(
-              `No se ha encontrado una receta con el siguiente nombre ${name}`
-            );
-    }
-    // Enviamos
-    res.status(200).send(totalRecipes);
+    const allRecipes = await getAllRecipes()
+        if(name){
+          // verificamos si el name que esta en el query
+            const recetas = allRecipes.filter(r=> r.name.toLowerCase().includes(name.toLowerCase())) 
+            if(recetas.length) return res.json(recetas)
+            else return res.send(`No se ha podido encontrar una receta con el nombre ${name}`)
+        }
+        res.json(allRecipes)
   } catch (error) {
     res.status(404).send(error);
-    console.error(error);
   }
 });
 

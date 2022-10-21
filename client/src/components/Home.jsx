@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 // actions
 import {
   getAllRecipes,
+  getRecipesByName,
   filterByDiets,
   filterBySource,
   filterSortName,
@@ -14,6 +15,7 @@ import {
 // componenetes que voy a usar
 import Card from "./Card";
 import Pagination from "./Pagination";
+import SearchBar from "./SearchBar";
 
 //* COMIENZO DEL COMPONENTE NUCLEO
 
@@ -92,6 +94,10 @@ export default function Home() {
       >
         Recargar Recetas
       </button>
+
+      {/* Barra de Busqueda */}
+
+      <SearchBar />
 
       {/* Filtros */}
 

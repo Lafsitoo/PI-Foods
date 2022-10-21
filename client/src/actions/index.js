@@ -1,6 +1,7 @@
 import axios from "axios";
 
 export const GET_ALL_RECIPES = "GET_ALL_RECIPES";
+export const GET_RECIPES_BY_NAME = "GET_RECIPES_BY_NAME";
 export const FILTER_BY_DIET = "FILTER_BY_DIET";
 export const GET_DIETS = "GET_DIETS";
 export const FILTER_BY_SOURCE = "FILTER_BY_SOURCE";
@@ -16,6 +17,23 @@ export function getAllRecipes() {
       type: GET_ALL_RECIPES,
       payload: json.data,
     });
+  };
+}
+
+//? obtener mediante name ( Search )
+export function getRecipesByName(name) {
+  return async function (dispatch) {
+    try {
+      var json = await axios.get(`${url}/recipes?name=${name}`);
+      return dispatch({
+        type: GET_RECIPES_BY_NAME,
+        payload: json.data,
+      });
+
+    } catch (error) {
+      console.log(error);
+      console.log("Hubo un error")
+    }
   };
 }
 
