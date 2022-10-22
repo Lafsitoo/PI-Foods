@@ -5,7 +5,7 @@ const { Recipe, Diet } = require("../db.js");
 const axios = require("axios");
 
 //? Aca me traigo la key del .env
-const { API_KEY, API_KEY2, API_KEY3 } = process.env;
+const { API_KEY, API_KEY2, API_KEY3, API_KEY4, API_KEY5, API_KEY6 } = process.env;
 //? Limito la cantidad de platos. En el Readme creo que pide 100
 const nRecipe = 100;
 

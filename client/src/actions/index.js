@@ -2,9 +2,10 @@ import axios from "axios";
 
 export const GET_ALL_RECIPES = "GET_ALL_RECIPES";
 export const GET_RECIPES_BY_NAME = "GET_RECIPES_BY_NAME";
-export const FILTER_BY_DIET = "FILTER_BY_DIET";
 export const GET_DIETS = "GET_DIETS";
+export const FILTER_BY_DIET = "FILTER_BY_DIET";
 export const FILTER_BY_SOURCE = "FILTER_BY_SOURCE";
+export const ORDER_SORT_SCORE ='ORDER_SORT_SCORE';
 export const ORDER_SORT_NAME = "ORDER_SORT_NAME";
 
 const url = "http://localhost:3001";
@@ -65,6 +66,14 @@ export function filterBySource(payload) {
     type: FILTER_BY_SOURCE,
     payload,
   };
+}
+
+//? por orden salubre
+export function filterSortScore(payload){
+  return {
+    type: ORDER_SORT_SCORE,
+    payload,
+  }
 }
 
 //? por a-z / z-a

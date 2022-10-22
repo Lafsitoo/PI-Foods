@@ -5,6 +5,7 @@ import {
   FILTER_BY_DIET,
   FILTER_BY_SOURCE,
   ORDER_SORT_NAME,
+  ORDER_SORT_SCORE,
 } from "../actions";
 
 const initialState = {
@@ -84,6 +85,33 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         recipes: action.payload === "Desc" ? state.recipes : sortNames,
+      };
+
+    case ORDER_SORT_SCORE:
+      const recipesScore = state.allRecipes;
+      const sortScore =
+        action.payload === "Up"
+          ? recipesScore.sort(function (a, b) {
+              if (a.healthScore > b.healthScore) {
+                return 1;
+              }
+              if (b.healthScore > a.healthScore) {
+                return -1;
+              }
+              return 0;
+            })
+          : recipesScore.sort(function (a, b) {
+              if (a.healthScore > b.healthScore) {
+                return -1;
+              }
+              if (b.healthScore > a.healthScore) {
+                return 1;
+              }
+              return 0;
+            });
+      return {
+        ...state,
+        recipes: action.payload === "All" ? state.recipes : sortScore,
       };
 
     default:

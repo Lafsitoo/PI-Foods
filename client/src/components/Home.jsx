@@ -7,10 +7,10 @@ import { useDispatch, useSelector } from "react-redux";
 // actions
 import {
   getAllRecipes,
-  getRecipesByName,
   filterByDiets,
   filterBySource,
   filterSortName,
+  filterSortScore,
 } from "../actions";
 // componenetes que voy a usar
 import Card from "./Card";
@@ -73,11 +73,19 @@ export default function Home() {
     dispatch(filterBySource(e.target.value));
   }
 
-  //? Filtro a-z / z-a
+  //? Filtro orden a-z / z-a
   function handleOrderName(e) {
     e.preventDefault();
     setCurrentPage(1);
     dispatch(filterSortName(e.target.value));
+    setOrder(`Order ${e.target.value}`);
+  }
+
+  //? Filtro orden salubre
+  function handleOrderScore(e) {
+    e.preventDefault();
+    setCurrentPage(1);
+    dispatch(filterSortScore(e.target.value));
     setOrder(`Order ${e.target.value}`);
   }
 
@@ -109,10 +117,10 @@ export default function Home() {
         </select>
 
         <label> Orden Saluble </label>
-        <select>
+        <select onChange={(e) => handleOrderScore(e)}>
           <option value="All"> Por Defecto </option>
-          <option value="Asc"> Ascendente </option>
-          <option value="Desc"> Descendente </option>
+          <option value="Up"> Ascendente </option>
+          <option value="Down"> Descendente </option>
         </select>
 
         <label> Tipo de Dieta </label>
