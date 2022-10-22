@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { getRecipesByName } from "../actions";
+import { getRecipesByName } from "../redux/actions";
 import lupa from "../img/lupa.png";
 
 //* COMPONENTE

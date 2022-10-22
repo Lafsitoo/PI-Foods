@@ -11,7 +11,7 @@ import {
   filterBySource,
   filterSortName,
   filterSortScore,
-} from "../actions";
+} from "../redux/actions";
 // componenetes que voy a usar
 import Card from "./Card";
 import Pagination from "./Pagination";
