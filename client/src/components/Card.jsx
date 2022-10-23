@@ -1,5 +1,5 @@
 import React from "react";
-import imgDefault from "../img/default.jpg";
+import imgDefault from "../resources/default.jpg";
 import "./../styles/Card.css";
 
 //* COMPONENTE
