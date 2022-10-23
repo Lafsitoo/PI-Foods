@@ -23,7 +23,9 @@ export default function Home() {
   const dispatch = useDispatch();
   const allRecipes = useSelector((state) => state.recipes);
 
-  //? paginado
+  //* ESTADOS
+
+  // paginado
   const [currentPage, setCurrentPage] = useState(1); // estado local, pág principal y seteado
   const [recipesPerPage] = useState(9); // cuantos platos quiero por pág ( setRecipesPerPage fue borrado por ser inutilizado )
 

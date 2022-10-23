@@ -6,6 +6,7 @@ import {
   FILTER_BY_SOURCE,
   ORDER_SORT_NAME,
   ORDER_SORT_SCORE,
+  POST_RECIPES,
 } from "../actions";
 
 const initialState = {
@@ -23,17 +24,23 @@ function rootReducer(state = initialState, action) {
         allRecipes: action.payload,
       };
 
+    //! *****
+
     case GET_DIETS:
       return {
         ...state,
         diets: action.payload,
       };
 
+    //! *****
+
     case GET_RECIPES_BY_NAME:
       return {
         ...state,
         recipes: action.payload,
       };
+
+    //! *****
 
     case FILTER_BY_DIET:
       const allRec = state.allRecipes;
@@ -48,6 +55,8 @@ function rootReducer(state = initialState, action) {
         recipes: filterByDiet,
       };
 
+    //! *****
+
     case FILTER_BY_SOURCE:
       const allRecSource = state.allRecipes;
       const filterBySource =
@@ -59,7 +68,9 @@ function rootReducer(state = initialState, action) {
         recipes: action.payload === "All" ? allRecSource : filterBySource,
       };
 
+    //! *****
     // nuestro .sort ordenara de acuerdo a la logica dada. a.name sera el primer resultado de recipes que encuentre y lo comparará con b.name el cual es el segundo resultado encontrado, si son igual devolvera como ya estaba definido
+
     case ORDER_SORT_NAME:
       const recipesName = state.allRecipes;
       const sortNames =
@@ -87,6 +98,8 @@ function rootReducer(state = initialState, action) {
         recipes: action.payload === "Desc" ? state.recipes : sortNames,
       };
 
+    //! *****
+
     case ORDER_SORT_SCORE:
       const recipesScore = state.allRecipes;
       const sortScore =
@@ -113,6 +126,15 @@ function rootReducer(state = initialState, action) {
         ...state,
         recipes: action.payload === "All" ? state.recipes : sortScore,
       };
+
+    //! *****
+
+    case POST_RECIPES:
+      return {
+        ...state,
+      };
+
+    //! *****
 
     default:
       return state;

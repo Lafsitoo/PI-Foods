@@ -5,8 +5,9 @@ export const GET_RECIPES_BY_NAME = "GET_RECIPES_BY_NAME";
 export const GET_DIETS = "GET_DIETS";
 export const FILTER_BY_DIET = "FILTER_BY_DIET";
 export const FILTER_BY_SOURCE = "FILTER_BY_SOURCE";
-export const ORDER_SORT_SCORE ='ORDER_SORT_SCORE';
+export const ORDER_SORT_SCORE = "ORDER_SORT_SCORE";
 export const ORDER_SORT_NAME = "ORDER_SORT_NAME";
+export const POST_RECIPES = 'POST_RECIPES';
 
 const url = "http://localhost:3001";
 
@@ -30,10 +31,9 @@ export function getRecipesByName(name) {
         type: GET_RECIPES_BY_NAME,
         payload: json.data,
       });
-
     } catch (error) {
       console.log(error);
-      console.log("Hubo un error")
+      console.log("Hubo un error");
     }
   };
 }
@@ -46,6 +46,19 @@ export function getAllDiets() {
       type: GET_DIETS,
       payload: json.data,
     });
+  };
+}
+
+//? crear nueva receta
+export function postRecipe(payload) {
+  return async function (dispatch) {
+    try {
+      const post = await axios.post(`${url}/recipes`, payload);
+      return post;
+
+    } catch (error) {
+      console.log(error);
+    }
   };
 }
 
@@ -69,11 +82,11 @@ export function filterBySource(payload) {
 }
 
 //? por orden salubre
-export function filterSortScore(payload){
+export function filterSortScore(payload) {
   return {
     type: ORDER_SORT_SCORE,
     payload,
-  }
+  };
 }
 
 //? por a-z / z-a
