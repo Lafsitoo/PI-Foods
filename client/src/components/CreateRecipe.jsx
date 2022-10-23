@@ -45,9 +45,12 @@ export default function CreateRecipe() {
       error.name = "Se requiere un nombre valido";
     } else error.name = null;
     // img
-    if (typeof newRecipe.img !== "string") {
+    if (
+      newRecipe.img.length > 1 &&
+      !newRecipe.img.match(/^(ftp|http|https):\/\/[^ "]+$/)
+    ) {
       error.img = "Debe haber una URL";
-    } else error.img = null;
+    }
     // resumen
     if (newRecipe.summary.length === 0) {
       error.summary = "Se requiere resumen de la receta";
@@ -254,7 +257,6 @@ export default function CreateRecipe() {
               disabled={
                 !(
                   errorValidation.name === null &&
-                  errorValidation.img === null &&
                   errorValidation.summary === null &&
                   errorValidation.healthScore === null &&
                   errorValidation.diets === null &&
