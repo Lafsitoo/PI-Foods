@@ -13,7 +13,7 @@ const nRecipe = 100;
 
 const getAllApi = async () => {
   const apiUrl = await axios(
-    `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY4}&addRecipeInformation=true&number=${nRecipe}`
+    `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY2}&addRecipeInformation=true&number=${nRecipe}`
   );
 
   const infoApi = apiUrl.data.results.map((e) => {

@@ -3,8 +3,9 @@ import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 // actions
 import { postRecipe, getAllDiets } from "../redux/actions";
+import "../styles/CreateRecipe.css";
 
-//* COMPONENETE
+//* COMPONENTE
 
 export default function CreateRecipe() {
   const dispath = useDispatch();
@@ -44,10 +45,10 @@ export default function CreateRecipe() {
     ) {
       error.name = "Se requiere un nombre valido";
     } else error.name = null;
-    // img
+    // image
     if (
-      newRecipe.img.length > 1 &&
-      !newRecipe.img.match(/^(ftp|http|https):\/\/[^ "]+$/)
+      newRecipe.image.length > 1 &&
+      !newRecipe.image.match(/^(ftp|http|https):\/\/[^ "]+$/)
     ) {
       error.img = "Debe haber una URL";
     }
@@ -70,7 +71,7 @@ export default function CreateRecipe() {
 
     return error;
   }
-
+  
   //* LOGICAS
 
   //? manejo de cambio de valores ( escribir en los inputs )
@@ -117,7 +118,7 @@ export default function CreateRecipe() {
     alert(`¡La receta ${newRecipe.name} fue creada con exito!`);
     setNewRecipe({
       name: "",
-      img: "",
+      image: "",
       summary: "",
       healthScore: 0,
       steps: [],
@@ -145,7 +146,11 @@ export default function CreateRecipe() {
           {/* NOMBRE */}
 
           <div>
-            <label> Nombre: </label>
+            <label>
+              <span>
+                Nombre: <span className="required">* </span>
+              </span>
+            </label>
             <input
               type="text"
               value={newRecipe.name}
@@ -155,7 +160,7 @@ export default function CreateRecipe() {
                 handleChange(e);
               }}
             />
-            {errorValidation.name && <p>{errorValidation.name}</p>}
+            {errorValidation.name && <h5 className="error">{errorValidation.name}</h5>}
           </div>
 
           {/* IMAGEN */}
@@ -163,21 +168,25 @@ export default function CreateRecipe() {
           <div>
             <label> Imagen ilustrativa: </label>
             <input
-              type="text"
-              value={newRecipe.img}
+              type="url"
+              value={newRecipe.image}
               name="img"
               placeholder="URL de la imagen"
               onChange={(e) => {
                 handleChange(e);
               }}
             />
-            {errorValidation.img && <p>{errorValidation.img}</p>}
+            {errorValidation.image && <h5 className="error">{errorValidation.img}</h5>}
           </div>
 
           {/* RESUMEN */}
 
           <div>
-            <label> Resumen: </label>
+            <label>
+              <span>
+                Resumen: <span className="required">* </span>
+              </span>
+            </label>
             <input
               type="text"
               name="summary"
@@ -187,15 +196,20 @@ export default function CreateRecipe() {
                 handleChange(e);
               }}
             />
-            {errorValidation.summary && <p>{errorValidation.summary}</p>}
+            {errorValidation.summary && <h5 className="error">{errorValidation.summary}</h5>}
           </div>
 
           {/* LVL SALUBRE */}
 
           <div>
-            <label> Nivel Salubre: </label>
+            <label>
+              <span>
+                Nivel Salubre: <span className="required">* </span>
+              </span>
+            </label>
             <input
-              type="number"
+              type="range"
+              className="input-field"
               value={newRecipe.healthScore}
               name="healthScore"
               onChange={(e) => {
@@ -204,22 +218,27 @@ export default function CreateRecipe() {
               min={1}
               max={100}
             />
+            {newRecipe.healthScore}
             {errorValidation.healthScore && (
-              <p>{errorValidation.healthScore}</p>
+              <h5 className="error">{errorValidation.healthScore}</h5>
             )}
           </div>
 
           {/* DIETA */}
           {/* pregunto si hay dietas y las mapeo para luego asignarlas como posibles opciones */}
           <div>
-            <label> Dieta/s: </label>
+            <label>
+              <span>
+                Dieta/s: <span className="required">* </span>
+              </span>
+            </label>
             <select onChange={(e) => handleSelect(e)}>
               <option> Selecionar </option>
               {diet?.map((el) => {
                 return <option value={el.name}>{el.name}</option>;
               })}
             </select>
-            {errorValidation.diets && <p>{errorValidation.diets}</p>}
+            {errorValidation.diets && <h5 className="error">{errorValidation.diets}</h5>}
           </div>
           {/* apartado para crear una lista de diets, para poder seleccionar más de una, y poder eliminarlas */}
           <div>
@@ -236,7 +255,11 @@ export default function CreateRecipe() {
           {/* PASO A PASO */}
 
           <div>
-            <label> Pasos de elaboración: </label>
+            <label>
+              <span>
+                Pasos de elaboración: <span className="required">* </span>
+              </span>
+            </label>
             <textarea
               type="text"
               value={newRecipe.steps}
@@ -246,7 +269,7 @@ export default function CreateRecipe() {
                 handleChange(e);
               }}
             />
-            {errorValidation.steps && <p>{errorValidation.steps}</p>}
+            {errorValidation.steps && <h5 className="error">{errorValidation.steps}</h5>}
           </div>
 
           {/* SUBMIT */}
