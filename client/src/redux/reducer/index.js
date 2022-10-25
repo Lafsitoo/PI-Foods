@@ -56,7 +56,7 @@ function rootReducer(state = initialState, action) {
     case GET_CLEAN:
       return {
         ...state,
-        //detail: action.payload
+        detail: action.payload
       }
 
     //! *****

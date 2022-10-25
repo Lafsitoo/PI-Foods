@@ -1,11 +1,24 @@
-.required{
-	color:red;
-	font-weight:normal;
+* {
+  box-sizing: border-box;
+}
+.required {
+  color: red;
+  font-weight: normal;
+}
+.error {
+  color: rgb(175, 4, 4);
+  font-size: 1.5rem;
+  padding: 10px;
+  border-radius: 5px;
 }
 
-.error {
-    color: rgb(175, 4, 4);
-    font-size: 1.5rem;
-    padding: 10px;
-    border-radius: 5px;
+/**************************/
+
+@media screen and (max-width: 600px) {
+  .col-25,
+  .col-75,
+  input[type="submit"] {
+    width: 90%;
+    margin-top: 0;
   }
+}

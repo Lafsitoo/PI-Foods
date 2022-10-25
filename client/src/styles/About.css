@@ -1,0 +1,115 @@
+.back {
+  background-image: url("https://img.freepik.com/foto-gratis/textura-madera_1208-334.jpg?w=826&t=st=1666660680~exp=1666661280~hmac=a4d3fb5db11edf9bba052bfb73feb767425c77f5166d6808953cbd64e7c1c4d5");
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  background-attachment: fixed;
+  height: 100%;
+  /* width: 100vw; */
+  display: flex;
+  flex-direction: row;
+}
+section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 70vh;
+  width: 80vw;
+  margin: 0 auto;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 12px;
+}
+.icons {
+  display: block;
+  padding: 5px;
+  margin: 5px;
+}
+.image {
+  background-color: #1e1c1abe;
+  display: flex;
+  border-radius: 5px 0 0 5px;
+}
+.image img {
+  height: 90vh;
+  margin: 30px auto;
+  border-radius: 12px;
+}
+.content{
+    background-color: #11121360;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 0  12px 12px 0;
+    color: #fff;
+}
+.content h2{
+    text-transform: uppercase;
+    font-size: 26px;
+    letter-spacing: 6px;
+}
+.content p{
+    padding-bottom: 15px;
+    font-weight: 300;
+    width: 90%;
+    text-align: center;
+    margin: 0 auto;
+    line-height: 1.4;
+    color:#ffffff
+}
+.content ul{
+    list-style: none;
+    text-align: center;
+    padding: 5px 15px;
+}
+
+/*****************************/
+
+@media (max-width: 900px) {
+  section {
+    grid-template-columns: 1fr;
+    width: 100%;
+    border-radius: none;
+  }
+  .image {
+    height: 100vh;
+    border-radius: none;
+  }
+  .content {
+    height: 100vh;
+    border-radius: none;
+  }
+  .content h2 {
+    font-size: 20px;
+    margin-top: 50px;
+  }
+  .content span {
+    margin: 20px 0;
+  }
+  .content p {
+    font-size: 14px;
+  }
+  .links li a {
+    font-size: 14px;
+  }
+  .links {
+    margin: 5px 0;
+  }
+  .links li {
+    padding: 6px 10px;
+  }
+  .icons li i {
+    font-size: 15px;
+  }
+}
+.credit {
+  text-align: center;
+  color: #000;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+.credit a {
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
+}

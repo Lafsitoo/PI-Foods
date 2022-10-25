@@ -47,8 +47,8 @@ export default function CreateRecipe() {
     } else error.name = null;
     // image
     if (
-      newRecipe.image.length > 1 &&
-      !newRecipe.image.match(/^(ftp|http|https):\/\/[^ "]+$/)
+      newRecipe.img.length > 1 &&
+      !newRecipe.img.match(/^(ftp|http|https):\/\/[^ "]+$/)
     ) {
       error.img = "Debe haber una URL";
     }
@@ -118,7 +118,7 @@ export default function CreateRecipe() {
     alert(`¡La receta ${newRecipe.name} fue creada con exito!`);
     setNewRecipe({
       name: "",
-      image: "",
+      img: "",
       summary: "",
       healthScore: 0,
       steps: [],
@@ -169,14 +169,14 @@ export default function CreateRecipe() {
             <label> Imagen ilustrativa: </label>
             <input
               type="url"
-              value={newRecipe.image}
+              value={newRecipe.img}
               name="img"
               placeholder="URL de la imagen"
               onChange={(e) => {
                 handleChange(e);
               }}
             />
-            {errorValidation.image && <h5 className="error">{errorValidation.img}</h5>}
+            {errorValidation.img && <h5 className="error">{errorValidation.img}</h5>}
           </div>
 
           {/* RESUMEN */}

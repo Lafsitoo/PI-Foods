@@ -16,6 +16,7 @@ import {
 import Card from "./Card";
 import Pagination from "./Pagination";
 import SearchBar from "./SearchBar";
+import NavBar from "./NavBar";
 
 //* COMIENZO DEL COMPONENTE NUCLEO
 
@@ -93,6 +94,10 @@ export default function Home() {
 
   return (
     <div>
+      {/* Barrra de Navagación */}
+
+      <NavBar />
+
       <Link to="/recipe">
         <button> Crear nueva receta </button>
       </Link>
