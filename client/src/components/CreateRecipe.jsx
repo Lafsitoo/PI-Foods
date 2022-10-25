@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 // actions
 import { postRecipe, getAllDiets } from "../redux/actions";
 import "../styles/CreateRecipe.css";
+import NavBar from "./NavBar";
 
 //* COMPONENTE
 
@@ -71,7 +72,7 @@ export default function CreateRecipe() {
 
     return error;
   }
-  
+
   //* LOGICAS
 
   //? manejo de cambio de valores ( escribir en los inputs )
@@ -131,17 +132,12 @@ export default function CreateRecipe() {
 
   return (
     <div>
-      <div>
-        <Link to="/home">
-          <button> Volver al Menu </button>
-        </Link>
-      </div>
-
-      <div>
-        <h1> Creando Receta </h1>
-      </div>
+      <NavBar />
 
       <form>
+        <div>
+          <h1> Creando Receta </h1>
+        </div>
         <div>
           {/* NOMBRE */}
 
@@ -160,7 +156,9 @@ export default function CreateRecipe() {
                 handleChange(e);
               }}
             />
-            {errorValidation.name && <h5 className="error">{errorValidation.name}</h5>}
+            {errorValidation.name && (
+              <h5 className="error">{errorValidation.name}</h5>
+            )}
           </div>
 
           {/* IMAGEN */}
@@ -176,7 +174,9 @@ export default function CreateRecipe() {
                 handleChange(e);
               }}
             />
-            {errorValidation.img && <h5 className="error">{errorValidation.img}</h5>}
+            {errorValidation.img && (
+              <h5 className="error">{errorValidation.img}</h5>
+            )}
           </div>
 
           {/* RESUMEN */}
@@ -196,7 +196,9 @@ export default function CreateRecipe() {
                 handleChange(e);
               }}
             />
-            {errorValidation.summary && <h5 className="error">{errorValidation.summary}</h5>}
+            {errorValidation.summary && (
+              <h5 className="error">{errorValidation.summary}</h5>
+            )}
           </div>
 
           {/* LVL SALUBRE */}
@@ -238,7 +240,9 @@ export default function CreateRecipe() {
                 return <option value={el.name}>{el.name}</option>;
               })}
             </select>
-            {errorValidation.diets && <h5 className="error">{errorValidation.diets}</h5>}
+            {errorValidation.diets && (
+              <h5 className="error">{errorValidation.diets}</h5>
+            )}
           </div>
           {/* apartado para crear una lista de diets, para poder seleccionar más de una, y poder eliminarlas */}
           <div>
@@ -269,7 +273,9 @@ export default function CreateRecipe() {
                 handleChange(e);
               }}
             />
-            {errorValidation.steps && <h5 className="error">{errorValidation.steps}</h5>}
+            {errorValidation.steps && (
+              <h5 className="error">{errorValidation.steps}</h5>
+            )}
           </div>
 
           {/* SUBMIT */}
