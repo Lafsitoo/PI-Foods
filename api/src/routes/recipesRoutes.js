@@ -49,7 +49,6 @@ router.post("/", async (req, res) => {
     name,
     image,
     diets,
-    dishTypes,
     summary,
     healthScore,
     steps,
@@ -60,7 +59,6 @@ router.post("/", async (req, res) => {
     const recipeCreated = await Recipe.create({
       name,
       image,
-      dishTypes,
       summary,
       healthScore,
       steps,

@@ -18,7 +18,7 @@ module.exports = (sequelize) => {
       image: {
         type: DataTypes.STRING,
         defaultValue:
-          "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/table-filled-with-large-variety-of-food-shot-from-royalty-free-image-1659038707.jpg?crop=0.668xw:1.00xh;0.167xw,0&resize=640:*",
+          "https://imag.bonviveur.com/pizza-caprichosa-o-pizza-capricciosa.webp",
       },
       // resumen del plato
       summary: {

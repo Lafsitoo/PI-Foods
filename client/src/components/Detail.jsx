@@ -43,36 +43,32 @@ export default function Detail() {
             alt=""
           />
           <h2>
-            {" "}
-            Nombre: {recipeId.length ? recipeId[0].name : "Cargando..."}{" "}
+            Nombre: {recipeId.length ? recipeId[0].name : "Cargando..."}
           </h2>
           <h5>
-            {" "}
             Dietas:
             {recipeId.length
               ? recipeId[0].diets.map((e) => <h5>{e.name}</h5>)
               : "Cargando..."}
           </h5>
           <h5>
-            {" "}
             Resumen:
             {recipeId.length
               ? recipeId[0].summary.replace(/<[^>]*>/g, "")
               : "Cargando..."}
           </h5>
           <h5>
-            {" "}
-            Nivel Salubre:{" "}
-            {recipeId.length ? recipeId[0].healthScore : "Cargando..."}{" "}
+            Nivel Salubre:
+            {recipeId.length ? recipeId[0].healthScore : "Cargando..."}
           </h5>
           <h5>
-            {" "}
             Paso a paso:
-            {recipeId.length
+            {recipeId.length? recipeId[0].steps[0].step?recipeId[0].steps.map(e=>e.step):recipeId[0].steps:"Cargando"}
+            {/* {recipeId.length
               ? recipeId[0].steps
-                ? recipeId[0].steps[0].steps.map((e) => <h5>{e.step}</h5>)
+                ? recipeId[0].steps[0].steps.map((e) => e.step)
                 : recipeId[0].steps
-              : "Cargando..."}
+              : "Cargando..."} */}
           </h5>
 
           <div>

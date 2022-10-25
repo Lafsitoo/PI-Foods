@@ -164,7 +164,9 @@ export default function CreateRecipe() {
           {/* IMAGEN */}
 
           <div>
-            <label> Imagen ilustrativa: </label>
+            <label>
+              <span>Imagen ilustrativa: </span>
+            </label>
             <input
               type="url"
               value={newRecipe.img}

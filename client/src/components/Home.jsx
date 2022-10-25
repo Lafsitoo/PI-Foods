@@ -98,9 +98,6 @@ export default function Home() {
 
       <NavBar />
 
-      <Link to="/recipe">
-        <button> Crear nueva receta </button>
-      </Link>
       <h1> Menu de Recetas </h1>
       <button
         onClick={(e) => {
