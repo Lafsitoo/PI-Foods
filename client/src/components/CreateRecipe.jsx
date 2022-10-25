@@ -134,7 +134,7 @@ export default function CreateRecipe() {
     <div>
       <NavBar />
 
-      <form>
+      <form className="form">
         <div>
           <h1> Creando Receta </h1>
         </div>

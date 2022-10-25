@@ -2,10 +2,8 @@
   background-image: url("https://img.freepik.com/foto-gratis/textura-madera_1208-334.jpg?w=826&t=st=1666660680~exp=1666661280~hmac=a4d3fb5db11edf9bba052bfb73feb767425c77f5166d6808953cbd64e7c1c4d5");
   background-size: cover;
   background-repeat: no-repeat;
-
   background-attachment: fixed;
   height: 100%;
-  /* width: 100vw; */
   display: flex;
   flex-direction: row;
 }

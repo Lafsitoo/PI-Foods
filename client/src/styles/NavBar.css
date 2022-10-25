@@ -14,11 +14,11 @@
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  background: rgb(37, 36, 34);
-  background: linear-gradient(
-    90deg,
-    rgba(37, 36, 34, 1) 0%,
-    rgba(64, 61, 57, 1) 100%
+  background: rgb(47, 46, 45);
+  background: radial-gradient(
+    circle,
+    rgba(47, 46, 45, 1) 0%,
+    rgba(17, 17, 16, 1) 100%
   );
 }
 .list a {
