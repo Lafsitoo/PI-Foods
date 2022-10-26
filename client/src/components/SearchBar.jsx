@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getRecipesByName } from "../redux/actions";
-import lupa from "../resources/lupa.png";
+import "../styles/SearchBar.css";
 
 //* COMPONENTE
 
@@ -24,16 +24,18 @@ export default function SearchBar() {
   }
 
   return (
-    <div>
+    <div class="input-group">
       <input
-      value={name}
+        value={name}
         type="text"
+        className="input"
         placeholder="Buscar Receta..."
         onChange={(e) => handleInputChange(e)}
       />
-      <button type="submit" onClick={(e) => handleSubmit(e)}>
+      {/* <button type="submit" onClick={(e) => handleSubmit(e)}>
         Buscar
-      </button>
+      </button> */}
+      <input class="button--submit" value="Insertar" type="submit" onClick={(e) => handleSubmit(e)}></input>
     </div>
   );
 }

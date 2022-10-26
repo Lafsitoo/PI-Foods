@@ -1,0 +1,48 @@
+/* From uiverse.io by @alexruix */
+.input-group {
+  display: flex;
+  align-items: center;
+  margin: 2em;
+}
+
+.input {
+  min-height: 50px;
+  max-width: 100%;
+  padding: 0 3rem;
+  color: #fff;
+  font-size: 15px;
+  border: 1px solid #DDDAD7;
+  border-radius: 6px 0 0 6px;
+  background-color: #dddad718;
+}
+::placeholder{
+    color: #DDDAD7;
+    font-size: 15px;
+}
+
+.button--submit {
+  min-height: 50px;
+  padding: 0.5em 1em;
+  border: none;
+  border-radius: 0 6px 6px 0;
+  background: rgb(134, 31, 29);
+  background: radial-gradient(
+    circle,
+    rgba(134, 31, 29, 1) 0%,
+    rgba(111, 29, 27, 1) 100%
+  );
+  color: #fff;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.button--submit:hover {
+  background-color: #861f1d;
+}
+
+.input:focus,
+.input:focus-visible {
+  border-color: #861f1d;
+  outline: none;
+}

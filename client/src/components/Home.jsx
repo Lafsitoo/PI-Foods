@@ -18,6 +18,7 @@ import Pagination from "./Pagination";
 import SearchBar from "./SearchBar";
 import NavBar from "./NavBar";
 import "../styles/Home.css";
+import Title from "./Title";
 
 //* COMIENZO DEL COMPONENTE NUCLEO
 
@@ -98,81 +99,80 @@ export default function Home() {
       {/* Barrra de Navagación */}
 
       <NavBar />
-      <div className="navbar">
-        <h1> Menu de Recetas </h1>
-        <button
-          onClick={(e) => {
-            handleClick(e);
-          }}
-        >
-          <h1>Recargar Recetas</h1>
-        </button>
 
-        {/* Barra de Busqueda */}
+      {/* Titulo */}
 
-        <SearchBar />
+      <Title />
 
-        {/* Filtros */}
-        <div className="home-a">
-          <div>
-            <label> Orden Alfabético </label>
-            <select onChange={(e) => handleOrderName(e)}>
-              <option value="Asc"> A-Z </option>
-              <option value="Desc"> Z-A </option>
-            </select>
+      {/* Barra de Busqueda */}
 
-            <label> Orden Saluble </label>
-            <select onChange={(e) => handleOrderScore(e)}>
-              <option value="All"> Por Defecto </option>
-              <option value="Up"> Ascendente </option>
-              <option value="Down"> Descendente </option>
-            </select>
+      <SearchBar />
 
-            <label> Tipo de Dieta </label>
-            <select onChange={(e) => handleFilterDiet(e)}>
-              <option value="Default"> Todas </option>
-              <option value="gluten free"> Gluten Free </option>
-              <option value="dairy free"> Dairy Free </option>
-              <option value="ketogenic"> Ketogenic </option>
-              <option value="vegan"> Vegan </option>
-              <option value="lacto ovo vegetarian">
-                Lacto Ovo Vegetarian
-              </option>
-              <option value="fodmap friendly"> Fodmap Friendly </option>
-              <option value="pescatarian"> Pescatarian </option>
-              <option value="paleolithic"> Paleolithic </option>
-              <option value="primal"> Primal </option>
-              <option value="whole 30"> Whole 30 </option>
-            </select>
+      <button
+        onClick={(e) => {
+          handleClick(e);
+        }}
+      >
+        Recargar Recetas
+      </button>
 
-            <label> Fuente de Datos </label>
-            <select onChange={(e) => handleFilterSource(e)}>
-              <option value="All"> Todos </option>
-              <option value="Created"> Recetas Creadas </option>
-              <option value="Api"> Recetas de Api </option>
-            </select>
-          </div>
+      {/* Filtros */}
+      <div>
+        <div className="filt">
+          <select className="az" onChange={(e) => handleOrderName(e)}>
+            <option value=""> Orden Alfabético </option>
+            <option value="Asc"> A-Z </option>
+            <option value="Desc"> Z-A </option>
+          </select>
 
-          {/* Patination */}
+          <select onChange={(e) => handleOrderScore(e)}>
+            <option value="All"> Orden Saluble </option>
+            <option value="Up"> Ascendente </option>
+            <option value="Down"> Descendente </option>
+          </select>
 
-          <Pagination
-            recipesPerPage={recipesPerPage}
-            allRecipes={allRecipes.length}
-            pagination={pagination}
-            currentPage={currentPage}
-          />
+          <select onChange={(e) => handleFilterDiet(e)}>
+            <option value=""> Tipo de Dieta </option>
+            <option value="Default"> Todas </option>
+            <option value="gluten free"> Gluten Free </option>
+            <option value="dairy free"> Dairy Free </option>
+            <option value="ketogenic"> Ketogenic </option>
+            <option value="vegan"> Vegan </option>
+            <option value="lacto ovo vegetarian">Lacto Ovo Vegetarian</option>
+            <option value="fodmap friendly"> Fodmap Friendly </option>
+            <option value="pescatarian"> Pescatarian </option>
+            <option value="paleolithic"> Paleolithic </option>
+            <option value="primal"> Primal </option>
+            <option value="whole 30"> Whole 30 </option>
+          </select>
 
-          {/* Card */}
+          <select onChange={(e) => handleFilterSource(e)}>
+            <option value=""> Fuente de Datos </option>
+            <option value="All"> Todos </option>
+            <option value="Created"> Recetas Creadas </option>
+            <option value="Api"> Recetas de Api </option>
+          </select>
+        </div>
 
-          <div>
-            {currentRecipe?.map((el) => {
-              return (
-                <Link to={`/recipes/${el.id}`}>
-                  <Card name={el.name} image={el.image} diet={el.diets} />
-                </Link>
-              );
-            })}
-          </div>
+        {/* Patination */}
+
+        <Pagination
+          recipesPerPage={recipesPerPage}
+          allRecipes={allRecipes.length}
+          pagination={pagination}
+          currentPage={currentPage}
+        />
+
+        {/* Card */}
+
+        <div>
+          {currentRecipe?.map((el) => {
+            return (
+              <Link to={`/recipes/${el.id}`}>
+                <Card name={el.name} image={el.image} diet={el.diets} />
+              </Link>
+            );
+          })}
         </div>
       </div>
     </div>
