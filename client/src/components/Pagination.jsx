@@ -1,4 +1,5 @@
 import React from "react";
+import "../styles/Pagination.css";
 
 //* COMPONENTE
 
@@ -15,32 +16,38 @@ export default function Pagination({
   }
 
   return (
-    <nav>
+    <div class="pag-container">
       {/* Anterior Pág */}
 
-      {currentPage !== 1 ? (
-        <button onClick={() => pagination(currentPage - 1)}> {`< Anterior`} </button>
-      ) : (
-        <></>
-      )}
+      <div className='pg-cont-butt'>
+        {currentPage !== 1 ? (
+          <button onClick={() => pagination(currentPage - 1)}>
+            {`< Anterior`}
+          </button>
+        ) : (
+          <></>
+        )}
+      </div>
 
       {/* Lista Págs */}
-
-      <ul>
+      <div className='pag-cont-cards'>
         {pageNumbers?.map((n) => (
           <li key={n}>
             <button onClick={() => pagination(n)}>{n}</button>
           </li>
         ))}
-      </ul>
-
+      </div>
       {/* Siguiente Pág */}
 
-      {currentPage < pageNumbers.length ? (
-        <button onClick={() => pagination(currentPage + 1)}> {`Siguiente >`} </button>
-      ) : (
-        <></>
-      )}
-    </nav>
+      <div className='pg-cont-butt'>
+        {currentPage < pageNumbers.length ? (
+          <button onClick={() => pagination(currentPage + 1)}>
+            {`Siguiente >`}
+          </button>
+        ) : (
+          <></>
+        )}
+      </div>
+    </div>
   );
 }

@@ -134,173 +134,176 @@ export default function CreateRecipe() {
     <div>
       <NavBar />
 
-      <form className="form">
-        <div>
-          <h1> Creando Receta </h1>
-        </div>
-        <div>
-          {/* NOMBRE */}
-
+      <div className="background">
+        <form className="form">
           <div>
-            <label>
-              <span>
-                Nombre: <span className="required">* </span>
-              </span>
-            </label>
-            <input
-              type="text"
-              value={newRecipe.name}
-              name="name"
-              placeholder="Nombre de la receta"
-              onChange={(e) => {
-                handleChange(e);
-              }}
-            />
-            {errorValidation.name && (
-              <h5 className="error">{errorValidation.name}</h5>
-            )}
+            <h1> Creando Receta </h1>
           </div>
-
-          {/* IMAGEN */}
-
           <div>
-            <label>
-              <span>Imagen ilustrativa: </span>
-            </label>
-            <input
-              type="url"
-              value={newRecipe.img}
-              name="img"
-              placeholder="URL de la imagen"
-              onChange={(e) => {
-                handleChange(e);
-              }}
-            />
-            {errorValidation.img && (
-              <h5 className="error">{errorValidation.img}</h5>
-            )}
+            {/* NOMBRE */}
+
+            <div>
+              <label>
+                <span>
+                  Nombre: <span className="required">* </span>
+                </span>
+              </label>
+              <input
+                type="text"
+                value={newRecipe.name}
+                name="name"
+                placeholder="Nombre de la receta"
+                onChange={(e) => {
+                  handleChange(e);
+                }}
+              />
+              {errorValidation.name && (
+                <h5 className="error">{errorValidation.name}</h5>
+              )}
+            </div>
+
+            {/* IMAGEN */}
+
+            <div>
+              <label>
+                <span>Imagen ilustrativa: </span>
+              </label>
+              <input
+                type="url"
+                value={newRecipe.img}
+                name="img"
+                placeholder="URL de la imagen"
+                onChange={(e) => {
+                  handleChange(e);
+                }}
+              />
+              {errorValidation.img && (
+                <h5 className="error">{errorValidation.img}</h5>
+              )}
+            </div>
+
+            {/* RESUMEN */}
+
+            <div>
+              <label>
+                <span>
+                  Resumen: <span className="required">* </span>
+                </span>
+              </label>
+              <input
+                type="text"
+                name="summary"
+                placeholder="Resumen de la receta"
+                value={newRecipe.summary}
+                onChange={(e) => {
+                  handleChange(e);
+                }}
+              />
+              {errorValidation.summary && (
+                <h5 className="error">{errorValidation.summary}</h5>
+              )}
+            </div>
+
+            {/* LVL SALUBRE */}
+
+            <div>
+              <label>
+                <span>
+                  Nivel Salubre: <span className="required">* </span>
+                </span>
+              </label>
+              <input
+                type="range"
+                className="input-field"
+                value={newRecipe.healthScore}
+                name="healthScore"
+                onChange={(e) => {
+                  handleChange(e);
+                }}
+                min={1}
+                max={100}
+              />
+              {newRecipe.healthScore}
+              {errorValidation.healthScore && (
+                <h5 className="error">{errorValidation.healthScore}</h5>
+              )}
+            </div>
+
+            {/* DIETA */}
+            {/* pregunto si hay dietas y las mapeo para luego asignarlas como posibles opciones */}
+            <div>
+              <label>
+                <span>
+                  Dieta/s: <span className="required">* </span>
+                </span>
+              </label>
+              <select onChange={(e) => handleSelect(e)}>
+                <option> Selecionar </option>
+                {diet?.map((el) => {
+                  return <option value={el.name}>{el.name}</option>;
+                })}
+              </select>
+              {errorValidation.diets && (
+                <h5 className="error">{errorValidation.diets}</h5>
+              )}
+            </div>
+            {/* apartado para crear una lista de diets, para poder seleccionar más de una, y poder eliminarlas */}
+            <div>
+              <ul>
+                {newRecipe.diets.map((el) => (
+                  <li>
+                    {el + " "}
+                    <button onClick={() => deleteSelect(el)}> X </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* PASO A PASO */}
+
+            <div>
+              <label>
+                <span>
+                  Pasos de elaboración: <span className="required">* </span>
+                </span>
+              </label>
+              <textarea
+                type="text"
+                value={newRecipe.steps}
+                name="steps"
+                placeholder="Pasos a seguir"
+                onChange={(e) => {
+                  handleChange(e);
+                }}
+              />
+              {errorValidation.steps && (
+                <h5 className="error">{errorValidation.steps}</h5>
+              )}
+            </div>
+
+            {/* SUBMIT */}
+
+            <div>
+              <button
+                class="button-62"
+                type="submit"
+                disabled={
+                  !(
+                    errorValidation.name === null &&
+                    errorValidation.summary === null &&
+                    errorValidation.healthScore === null &&
+                    errorValidation.diets === null &&
+                    errorValidation.steps === null
+                  )
+                }
+                onClick={(e) => hendleSubmit(e)}
+              >
+                Crear Receta
+              </button>
+            </div>
           </div>
-
-          {/* RESUMEN */}
-
-          <div>
-            <label>
-              <span>
-                Resumen: <span className="required">* </span>
-              </span>
-            </label>
-            <input
-              type="text"
-              name="summary"
-              placeholder="Resumen de la receta"
-              value={newRecipe.summary}
-              onChange={(e) => {
-                handleChange(e);
-              }}
-            />
-            {errorValidation.summary && (
-              <h5 className="error">{errorValidation.summary}</h5>
-            )}
-          </div>
-
-          {/* LVL SALUBRE */}
-
-          <div>
-            <label>
-              <span>
-                Nivel Salubre: <span className="required">* </span>
-              </span>
-            </label>
-            <input
-              type="range"
-              className="input-field"
-              value={newRecipe.healthScore}
-              name="healthScore"
-              onChange={(e) => {
-                handleChange(e);
-              }}
-              min={1}
-              max={100}
-            />
-            {newRecipe.healthScore}
-            {errorValidation.healthScore && (
-              <h5 className="error">{errorValidation.healthScore}</h5>
-            )}
-          </div>
-
-          {/* DIETA */}
-          {/* pregunto si hay dietas y las mapeo para luego asignarlas como posibles opciones */}
-          <div>
-            <label>
-              <span>
-                Dieta/s: <span className="required">* </span>
-              </span>
-            </label>
-            <select onChange={(e) => handleSelect(e)}>
-              <option> Selecionar </option>
-              {diet?.map((el) => {
-                return <option value={el.name}>{el.name}</option>;
-              })}
-            </select>
-            {errorValidation.diets && (
-              <h5 className="error">{errorValidation.diets}</h5>
-            )}
-          </div>
-          {/* apartado para crear una lista de diets, para poder seleccionar más de una, y poder eliminarlas */}
-          <div>
-            <ul>
-              {newRecipe.diets.map((el) => (
-                <li>
-                  {el + " "}
-                  <button onClick={() => deleteSelect(el)}> X </button>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* PASO A PASO */}
-
-          <div>
-            <label>
-              <span>
-                Pasos de elaboración: <span className="required">* </span>
-              </span>
-            </label>
-            <textarea
-              type="text"
-              value={newRecipe.steps}
-              name="steps"
-              placeholder="Pasos a seguir"
-              onChange={(e) => {
-                handleChange(e);
-              }}
-            />
-            {errorValidation.steps && (
-              <h5 className="error">{errorValidation.steps}</h5>
-            )}
-          </div>
-
-          {/* SUBMIT */}
-
-          <div>
-            <button
-              type="submit"
-              disabled={
-                !(
-                  errorValidation.name === null &&
-                  errorValidation.summary === null &&
-                  errorValidation.healthScore === null &&
-                  errorValidation.diets === null &&
-                  errorValidation.steps === null
-                )
-              }
-              onClick={(e) => hendleSubmit(e)}
-            >
-              Crear Receta
-            </button>
-          </div>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
   );
 }

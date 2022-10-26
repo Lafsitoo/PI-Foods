@@ -42,9 +42,7 @@ export default function Detail() {
             src={recipeId.length ? recipeId[0].image : "Imagen no encontrada"}
             alt=""
           />
-          <h2>
-            Nombre: {recipeId.length ? recipeId[0].name : "Cargando..."}
-          </h2>
+          <h2>Nombre: {recipeId.length ? recipeId[0].name : "Cargando..."}</h2>
           <h5>
             Dietas:
             {recipeId.length
@@ -63,12 +61,17 @@ export default function Detail() {
           </h5>
           <h5>
             Paso a paso:
-            {recipeId.length? recipeId[0].steps[0].step?recipeId[0].steps.map(e=>e.step):recipeId[0].steps:"Cargando"}
-            {/* {recipeId.length
-              ? recipeId[0].steps
+            {/* {recipeId[0].length
+              ? recipeId[0].steps[0].steps
+                ? recipeId[0].steps[0].steps.map((e) => e.step)
+                : recipeId.steps
+              : "Cargando..."} */}
+            {/* {recipeId[0].length
+              ? recipeId[0].steps[0].steps
                 ? recipeId[0].steps[0].steps.map((e) => e.step)
                 : recipeId[0].steps
               : "Cargando..."} */}
+              {recipeId.length? recipeId[0].steps[0].step?recipeId[0].steps.map(e=>e.step):recipeId[0].steps:"Cargando"}
           </h5>
 
           <div>

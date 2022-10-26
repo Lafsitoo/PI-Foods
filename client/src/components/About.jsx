@@ -35,8 +35,8 @@ export default function About() {
             </p>
             <p> Para está página utilicé las siguientes tecnologias: </p>
             <ul>
+              <li>HTML / CSS</li>
               <li>Javascript</li>
-              <li>HTML/CSS</li>
               <li>React & Redux (Front-End)</li>
               <li>Node Express (Back-End)</li>
               <li>Sequeliz (Database)</li>

@@ -1,0 +1,91 @@
+:root {
+  --color-primary: #fff;
+  --color-secundary: #000;
+  --color-gray-dark: #737373;
+  --color-gray-medium: #545454;
+  --color-gray-light: #cccdcd;
+  --font-primary: "Montserrat", sans-serif;
+}
+
+.pag-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+.pag-container li {
+  list-style: none;
+}
+.pag-container li > button {
+  color: #faf6f3;
+  background-color: #111110;
+  box-shadow: #111110 0 10px 20px -10px;
+  font-size: 1.2em;
+  margin: 5px;
+  height: 40px;
+  width: 40px;
+  border: none;
+  border-radius: 50%;
+}
+.pag-container li > button:hover {
+  font-size: 1.2em;
+  margin: 2.5px;
+  height: 45px;
+  width: 45px;
+  border: none;
+  border-radius: 50%;
+}
+
+.pag-cont-cards {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 85%;
+}
+
+.pg-cont-butt {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  height: 50px;
+  width: 100%;
+  margin: 20px;
+}
+.pg-cont-butt button {
+  background: #111110;
+  border-radius: 999px;
+  box-shadow: #111110 0 10px 20px -10px;
+  box-sizing: border-box;
+  color: #faf6f3;
+  cursor: pointer;
+  font-family: Inter, Helvetica, "Apple Color Emoji", "Segoe UI Emoji",
+    NotoColorEmoji, "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji",
+    EmojiSymbols, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue",
+    "Noto Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  opacity: 1;
+  outline: 0 solid transparent;
+  padding: 8px 18px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: fit-content;
+  word-break: break-word;
+  border: 0;
+}
+
+@media screen and (max-width: 390px) {
+  .pg-cont-butt {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    height: 80px;
+    width: 100%;
+    margin: 20px;
+  }
+}

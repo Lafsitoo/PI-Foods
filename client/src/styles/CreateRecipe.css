@@ -1,6 +1,15 @@
 * {
   box-sizing: border-box;
 }
+.background {
+  background-image: url("https://cdn.pixabay.com/photo/2017/11/23/16/57/pizza-2973200_960_720.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: auto;
+  height: 55em;
+  display: flex;
+  flex-direction: row;
+}
 .required {
   color: red;
   font-weight: normal;
@@ -8,13 +17,12 @@
 .error {
   color: rgb(175, 4, 4);
   font-size: 1.5rem;
-  padding: 10px;
   border-radius: 5px;
 }
 .form {
   width: 450px;
   padding: 30px;
-  margin: 40px auto;
+  margin: auto;
   background: #f8f9fa;
   border-radius: 10px;
   -webkit-border-radius: 10px;
@@ -24,7 +32,12 @@
   -webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.13);
 }
 .form h1 {
-  background: #c68c41;
+  background: rgb(134, 31, 29);
+  background: radial-gradient(
+    circle,
+    rgba(134, 31, 29, 1) 0%,
+    rgba(111, 29, 27, 1) 100%
+  );
   padding: 20px 30px 15px 30px;
   margin: -30px -30px 30px -30px;
   border-radius: 10px 10px 0 0;
@@ -36,6 +49,25 @@
   -webkit-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
   box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
   border: 1px solid #c68c41;
+}
+.form h1 > span {
+  display: block;
+  margin-top: 2px;
+}
+.form label {
+  display: block;
+  font: 13px Arial, Helvetica, sans-serif;
+  color: #888;
+  margin-bottom: 15px;
+}
+.form h5 {
+  display: block;
+  font-size: 0.83em;
+  margin-block-start: 1.67em;
+  margin-block-end: 1.67em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
 }
 .form input[type="text"],
 .form input[type="url"],
@@ -50,19 +82,15 @@
   border-radius: 6px;
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
-  border: 2px solid #fff;
+  border: 2px solid #f8f9fa;
   box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.33);
   -moz-box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.33);
   -webkit-box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.33);
 }
 input[type="range"]::-webkit-slider-runnable-track {
   border-radius: 10px;
-  box-shadow: 0px 0px 5px 5px gainsboro;
-  background: linear-gradient(
-    to right,
-    #eddcc7,
-    #c68c41
-  );
+  box-shadow: 0px 0px 5px 5px #f8f9fa;
+  background: linear-gradient(to right, #f81e1a, #6f1d1b);
   height: 7.5px;
 }
 .range {
@@ -70,6 +98,41 @@ input[type="range"]::-webkit-slider-runnable-track {
   margin: auto;
   display: block;
   margin-top: 35px;
+}
+/* CSS */
+.button-62 {
+  background: linear-gradient(to bottom right, #f81e1a, #6f1d1b);
+  border: 0;
+  border-radius: 12px;
+  color: #f8f9fa;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system, system-ui, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 2.5;
+  outline: transparent;
+  padding: 0 1rem;
+  text-align: center;
+  text-decoration: none;
+  transition: box-shadow 0.2s ease-in-out;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+}
+
+.button-62:not([disabled]):focus {
+  box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.5),
+    -0.125rem -0.125rem 1rem rgba(239, 71, 101, 0.5),
+    0.125rem 0.125rem 1rem rgba(255, 154, 90, 0.5);
+}
+
+.button-62:not([disabled]):hover {
+  box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.5),
+    -0.125rem -0.125rem 1rem rgba(239, 71, 101, 0.5),
+    0.125rem 0.125rem 1rem rgba(255, 154, 90, 0.5);
 }
 
 /**************************/
