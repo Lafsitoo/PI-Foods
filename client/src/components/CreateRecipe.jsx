@@ -58,7 +58,7 @@ export default function CreateRecipe() {
       error.summary = "Se requiere resumen de la receta";
     } else error.summary = null;
     // healthScore
-    if (!newRecipe.healthScore > 0 && !newRecipe.healthScore < 100) {
+    if (!newRecipe.healthScore > 0) {
       error.healthScore = "Debe ser entre 0 y 100";
     } else error.healthScore = null;
     // diet

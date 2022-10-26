@@ -78,4 +78,12 @@ router.post("/", async (req, res) => {
   }
 });
 
+// router.delete("/:id", (req, res) => {
+//   const {id} = req.query
+//   if(id) {
+
+//   }
+
+// })
+
 module.exports = router;

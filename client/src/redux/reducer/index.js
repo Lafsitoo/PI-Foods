@@ -114,7 +114,7 @@ function rootReducer(state = initialState, action) {
             });
       return {
         ...state,
-        recipes: action.payload === "Desc" ? state.recipes : sortNames,
+        recipes: sortNames,
       };
 
     //! *****
