@@ -1,0 +1,30 @@
+* {
+  margin: 0;
+  padding: 0;
+  outline: none;
+}
+.ba {
+  background-image: url("https://img.freepik.com/foto-gratis/textura-madera_1208-334.jpg?w=826&t=st=1666660680~exp=1666661280~hmac=a4d3fb5db11edf9bba052bfb73feb767425c77f5166d6808953cbd64e7c1c4d5");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+.detail img {
+    border-radius: 5px;
+    margin: 3em;
+    width: 50%;
+    height: 50%;
+}
+.detail h1{
+    color: white
+}
+.detail h2 {
+    color: rgb(214, 214, 214);
+}
+.detail p {
+    color: rgb(185, 184, 184);
+    margin: 3em;
+}
+.detail h3 {
+    color: rgb(214, 214, 214);
+}

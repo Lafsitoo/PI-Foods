@@ -1,15 +1,16 @@
 .home {
   background-image: url("https://img.freepik.com/foto-gratis/textura-madera_1208-334.jpg?w=826&t=st=1666660680~exp=1666661280~hmac=a4d3fb5db11edf9bba052bfb73feb767425c77f5166d6808953cbd64e7c1c4d5");
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
   background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: 100%;
   width: 100%;
+  height: auto;
+  overflow:hidden
 }
 
 .filt {
@@ -30,6 +31,15 @@
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
+.gallery{
+  display: grid;
+  gap:2rem;
+  /* align-items: center;  */
+  grid-auto-rows:20rem;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  justify-items: center;
+  align-items: center;
+} 
 /* From uiverse.io by @alexroumi */
 button {
   padding: 10px 20px;
@@ -69,4 +79,6 @@ button:hover {
 button:hover::before {
   width: 100%;
 }
+
+
 

@@ -31,6 +31,10 @@ h1 {
   margin-bottom: 15px;
 }
 
+span {
+  visibility: hidden;
+}
+
 h3,
 p {
   font-family: "Open Sans", sans-serif;

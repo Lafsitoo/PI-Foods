@@ -6,15 +6,12 @@ import "./../styles/Card.css";
 
 export default function Card({ name, diets, image }) {
   return (
-    <div>
+    <div className="card">
       <h3>{name}</h3>
-      <h5>{diets}</h5>
       <div>
         <img
           src={image ? image : imgDefault}
           alt="img not found"
-          width="200px"
-          height="250px"
         />
       </div>
     </div>

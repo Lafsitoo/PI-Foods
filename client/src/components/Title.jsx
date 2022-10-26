@@ -7,6 +7,7 @@ export default function Title() {
       <div class="overlay">
         <h1>MENÙ RICETTE</h1>
         <h3>________________</h3>
+        <span>.</span>
         <p>
           "Aquí encontraras las mejores recetas a nivel mundial, desde las más
           básicas hasta con algunas de las más raras y exquisita. Disfruta la

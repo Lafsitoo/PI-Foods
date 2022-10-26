@@ -6,7 +6,7 @@ import "./../styles/LandingPage.css";
 
 export default function LandingPage() {
   return (
-    <div>
+    <div  id='lp-container'>
       <h1>BIENVENIDO</h1>
       <h3>Menu de Recetas</h3>
       <Link to="/home">

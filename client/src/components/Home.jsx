@@ -165,7 +165,7 @@ export default function Home() {
 
         {/* Card */}
 
-        <div>
+        <div className="gallery">
           {currentRecipe?.map((el) => {
             return (
               <Link to={`/recipes/${el.id}`}>

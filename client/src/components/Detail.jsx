@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import NavBar from "./NavBar";
 import Loader from "./Loader";
+import "../styles/Detail.css";
 // actions
 import { getDetails, getClean } from "../redux/actions";
 
@@ -37,47 +38,59 @@ export default function Detail() {
       {charged ? (
         <Loader />
       ) : (
-        <div>
-          <img
-            src={recipeId.length ? recipeId[0].image : "Imagen no encontrada"}
-            alt=""
-          />
-          <h2>Nombre: {recipeId.length ? recipeId[0].name : "Cargando..."}</h2>
-          <h5>
-            Dietas:
-            {recipeId.length
-              ? recipeId[0].diets.map((e) => <h5>{e.name}</h5>)
-              : "Cargando..."}
-          </h5>
-          <h5>
-            Resumen:
-            {recipeId.length
-              ? recipeId[0].summary.replace(/<[^>]*>/g, "")
-              : "Cargando..."}
-          </h5>
-          <h5>
-            Nivel Salubre:
-            {recipeId.length ? recipeId[0].healthScore : "Cargando..."}
-          </h5>
-          <h5>
-            Paso a paso:
-            {/* {recipeId[0].length
+        <div className="ba">
+          <div className="detail">
+            <div>
+              <img
+                src={
+                  recipeId.length ? recipeId[0].image : "Imagen no encontrada"
+                }
+                alt=""
+              />
+            </div>
+
+            <div>
+              <div>
+                <h1>{recipeId.length ? recipeId[0].name : "Cargando..."}</h1>
+
+                <h2>
+                  {recipeId.length
+                    ? recipeId[0].diets.map((e) => <h5>{e.name}</h5>)
+                    : "Cargando..."}
+                </h2>
+
+                <p>
+                  {recipeId.length
+                    ? recipeId[0].summary.replace(/<[^>]*>/g, "")
+                    : "Cargando..."}
+                </p>
+
+                <div>
+                  <h3>
+                    Nivel Salubre:
+                    {recipeId.length ? recipeId[0].healthScore : "Cargando..."}
+                  </h3>
+                </div>
+                <h3>Paso a paso:</h3>
+                <p>
+                  {/* {recipeId[0].length
               ? recipeId[0].steps[0].steps
                 ? recipeId[0].steps[0].steps.map((e) => e.step)
                 : recipeId.steps
               : "Cargando..."} */}
-            {/* {recipeId[0].length
+                  {/* {recipeId[0].length
               ? recipeId[0].steps[0].steps
                 ? recipeId[0].steps[0].steps.map((e) => e.step)
                 : recipeId[0].steps
               : "Cargando..."} */}
-              {recipeId.length? recipeId[0].steps[0].step?recipeId[0].steps.map(e=>e.step):recipeId[0].steps:"Cargando"}
-          </h5>
-
-          <div>
-            <Link to="/home">
-              <button> Inicio </button>
-            </Link>
+                  {recipeId.length
+                    ? recipeId[0].steps[0].step
+                      ? recipeId[0].steps.map((e) => e.step)
+                      : recipeId[0].steps
+                    : "Cargando"}
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       )}

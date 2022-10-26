@@ -1,56 +1,59 @@
-:root{
-    --color-primary: #fff;
-    --color-secundary: #000;
-    --color-gray-dark: #737373;
-    --color-gray-medium: #545454;
-    --color-gray-light: #cccdcd;
-    --font-primary: 'Montserrat', sans-serif;
+:root {
+  --color-primary: #fff;
+  --color-secundary: #000;
+  --color-gray-dark: #737373;
+  --color-gray-medium: #545454;
+  --color-gray-light: #cccdcd;
+  --font-primary: "Montserrat", sans-serif;
 }
-#lp-container{
-    background-color: var(--color-secundary);
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    height: 100vh;
-    width: 100vw;
+#lp-container {
+  background: url("https://cdn.pixabay.com/photo/2017/06/17/15/06/pan-pizza-2412474_960_720.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
 }
 
-#lp-container h3{
-    color: var(--color-primary);
-    font-size: 1.5em;
-    margin: -30px;
+#lp-container h3 {
+  color: var(--color-primary);
+  font-size: 1.5em;
+  margin: 1em;
 }
-#lp-container h1{
-    color: var(--color-primary);
-    font-size: 15em;
-    margin: 0px;
+#lp-container h1 {
+  color: var(--color-primary);
+  font-size: 11em;
+  margin: 0px;
 }
-#lp-container button{
-    font-family: 'Montserrat', sans-serif;
-    font-weight: bold;
-    font-size: 1.3em;
-    margin: 0px;
-    border: none;
-    border-radius: 50px;
+#lp-container button {
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  font-size: 1.3em;
+  margin: 0px;
+  border: none;
+  border-radius: 50px;
+  height: 50px;
+  width: 150px;
+  transition: 0.1s;
+}
+#lp-container button:hover {
+  font-size: 1.32em;
+  margin-bottom: -1px;
+  height: 52px;
+  width: 152px;
+}
+
+@media screen and (max-width: 900px) {
+  #lp-container h1 {
+    font-size: 5em;
+    margin: 50px;
+  }
+  #lp-container button {
     height: 50px;
     width: 150px;
-    transition: .1s;
-}
-#lp-container button:hover{
-    font-size: 1.32em;
-    margin-bottom: -1px;
-    height: 52px;
-    width: 152px;
-}
-
-@media screen and (max-width: 400px){
-    #lp-container h1{
-        font-size: 5em;
-        margin: 50px;
-    }
-    #lp-container button{
-        height: 50px;
-        width: 150px;
-    }
+  }
 }

@@ -5,6 +5,7 @@ import Home from "./components/Home";
 import CreateRecipe from "./components/CreateRecipe"
 import Detail from "./components/Detail"
 import About from "./components/About";
+import Error from "./components/Error";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/recipe" component={CreateRecipe} />
           <Route path="/recipes/:id" component={Detail} />
           <Route path="/about" component={About} />
+          <Route path="*" component={Error} />
         </Switch>
       </div>
     </BrowserRouter>

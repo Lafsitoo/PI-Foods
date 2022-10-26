@@ -1,14 +1,30 @@
-.card{
+/* From uiverse.io by @Giuxpro */
+.card {
+  width: 20em;
+  height: 20em;
+  background: rgb(243, 241, 241);
+  transition: all 300ms;
+  border-radius: 10px;
+  margin: 5em;
+}
+
+.card:hover {
+  opacity: 0.8;
+  transform: scale(1.1);
+}
+
+.card img {
+    display: flex;
+    justify-content: left;
     width: 100%;
+    height: 95%;
     border-radius: 10px;
-    background-color: peru;
-    display: inline-flex; 
-    margin: 10px;
-    box-shadow: rgba(0, 0, 0, 0.295) 0px 0px 10px ;
 }
-.card-logo{
-    padding: 10px;
-}
-.card-content{
-    color:white
+
+.card h3 {
+    color: var(--color-gray-medium);
+    font-size: 1.5em;
+    margin-top: 0px;
+    margin-left: 0px;
+    height: 15%;
 }
